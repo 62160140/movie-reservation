@@ -5,7 +5,7 @@ const total = document.getElementById('total')
 const movieSelect = document.getElementById('movie')
 
 
-const price = +movieSelect.value; //convert  movie to Integer
+let price = +movieSelect.value; //convert  movie to Integer
 
 container.addEventListener('click',e=>{
   if(e.target.classList.contains('seat') && !e.target.classList.contains('occupied')){ 
@@ -20,3 +20,8 @@ function updateSelected(){
   count.innerHTML = selectedSeats
   total.innerText = selectedSeats*price
 }
+
+movieSelect.addEventListener('change',e=>{
+  price= +e.target.value
+  updateSelected()
+})
