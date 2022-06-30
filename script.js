@@ -16,12 +16,31 @@ container.addEventListener('click',e=>{
 
 
 function updateSelected(){
-  const selectedSeats = document.querySelectorAll('.row .seat.selected').length //นับ class selected
-  count.innerHTML = selectedSeats
-  total.innerText = selectedSeats*price
+  const selectedSeats = document.querySelectorAll('.row .seat.selected') //class selected
+  setInnerHTML(selectedSeats.length);
+
+  //save to localStorage
+  saveToLocalStorage(selectedSeats);
 }
 
 movieSelect.addEventListener('change',e=>{
   price= +e.target.value
+  setMovieData(e.target.selectedIndex,e.target.value)
   updateSelected()
 })
+
+function saveToLocalStorage(selectedSeats) {
+  const selectedSeatsSpread = [...selectedSeats]; //Spread operator
+  const seatsIndex = selectedSeatsSpread.map(seat => [...seats].indexOf(seat));
+  localStorage.setItem('selectedSeats', JSON.stringify(seatsIndex));
+}
+
+function setInnerHTML(selectedSeats) {
+  count.innerHTML = selectedSeats;
+  total.innerText = selectedSeats * price;
+}
+
+function setMovieData(movieIndex,moviePrice){
+  localStorage.setItem('movieIndex',movieIndex)
+  localStorage.setItem('moviePrice',moviePrice)
+}
