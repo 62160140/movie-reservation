@@ -44,3 +44,30 @@ function setMovieData(movieIndex,moviePrice){
   localStorage.setItem('movieIndex',movieIndex)
   localStorage.setItem('moviePrice',moviePrice)
 }
+
+function init(){
+  const priceSelectedMovie = localStorage.getItem('moviePrice')
+  const selectedMovieIndex = localStorage.getItem('movieIndex')
+  const selectedSeats = JSON.parse(localStorage.getItem('selectedSeats'))
+  seats.forEach((seat,index)=>{
+    if(selectedSeats.indexOf(index)>-1){ //เช็คว่า seat นี้ตรงกับ index หรือไม่
+      seat.classList.add('selected')
+    }
+  })
+
+  if(selectedMovieIndex!==null){
+    movieSelect.selectedIndex=selectedMovieIndex
+  }
+  if(selectedMovieIndex!==null){
+    movieSelect.selectedIndex=selectedMovieIndex
+  }
+
+  if(priceSelectedMovie !==null){
+    price = +priceSelectedMovie
+  }
+
+  updateSelected()
+}
+
+
+init()
