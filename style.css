@@ -82,14 +82,16 @@ body{
   margin-left: 2.5px;
 }
 
-/* .showcase .seat:not(.occupied):hover{
-  cursor: default;
-  transform: scale(1);
-} */
 
-.seat:not(.occupied):hover{
+/* .seat:not(.occupied):hover{
   cursor: pointer;
   transform: scale(1.5);
+} */
+
+.row .seat:not(.occupied):hover{
+  cursor: pointer;
+  transform: scale(1.5);
+
 }
 
 .screen{
